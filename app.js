@@ -36,6 +36,7 @@ function init() { // when you init the game - reset
   guessList = [] //empty the guess list
   secretNum = Math.floor(Math.random() * 100 + 1) //random secret num
   console.log(secretNum)
+  render()
 }
 
 function submit(evt) {
@@ -52,13 +53,12 @@ function checkGuess(guess) {
   }
   else if (guess === secretNum) {
     isWinner = true
-    messageEl.textContent = "We have a winner!"
-  } else {
+  }
     guessList.push(guess)
     render()
   }
   console.log(guessList)
-}
+
 
 function renderError(error) {
   messageEl.textContent = error
@@ -76,16 +76,24 @@ function render() {
   }
 
   if (isWinner) {
-    renderWin()
+    renderWin(div)
   } else if (lastGuess > secretNum || lastGuess < secretNum) {
     renderGuess(div, lastGuess)
   }
 }
 
-function renderWin () {
-
+function renderWin (div) {
+  messageEl.textContent = "We have a winner!"
+  messageEl.className = "winner"
+  guessesEl.appendChild(div)
+  div.className = "winner"
+  if  (guessList.length === 1) {
+    messageEl.textContent = "You found the number in one guess!!!"
+  } else {
+    messageEl.textContent = `Congratulations! You found the number ${secretNum} in ${guessList.length} guesses!`
+  }
 }
 
-function renderGuess() {
+function renderGuess(div, lastGuess) {
 
 }
