@@ -35,7 +35,6 @@ function init() { // when you init the game - reset
   isWinner = false // if theres not a winner
   guessList = [] //empty the guess list
   secretNum = Math.floor(Math.random() * 100 + 1) //random secret num
-  console.log(secretNum)
   render()
 }
 
@@ -57,7 +56,6 @@ function checkGuess(guess) {
     guessList.push(guess)
     render()
   }
-  console.log(guessList)
 
 
 function renderError(error) {
@@ -95,5 +93,15 @@ function renderWin (div) {
 }
 
 function renderGuess(div, lastGuess) {
+  if (lastGuess < secretNum) {
+    messageEl.className = "low"
+    div.className = "low"
+    messageEl.textContent = `${lastGuess} is too low. Try again!`
+  } else if (lastGuess > secretNum) {
+    messageEl.className = "high"
+    div.className = "high"
+    messageEl.textContent = `${lastGuess} is too high. Try again!`
+  }
+  guessesEl.appendChild(div)
 
 }
