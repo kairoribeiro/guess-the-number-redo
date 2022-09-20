@@ -18,6 +18,9 @@ const messageEl = document.querySelector("#message")
 const resetBtn = document.querySelector("#reset-button")
 const prevGuessMsg = document.querySelector("#prev-guesses-msg")
 
+const titleEl = document.querySelector("#title") //animation
+const kazoo = new Audio("../audio/small-applause.mp3")
+
 /*----------------------------- Event Listeners -----------------------------*/
 form.addEventListener("reset", init)
 form.addEventListener("submit", submit)
@@ -27,6 +30,7 @@ form.addEventListener("submit", submit)
 init()
 
 function init() { // when you init the game - reset
+  titleEl.className = "" //animation
   messageEl.className = ""
   guessesEl.textContent = "" //empty the prev guesses div
   messageEl.textContent = "Please enter a guess between 1 and 100!"
@@ -81,6 +85,7 @@ function render() {
 }
 
 function renderWin (div) {
+  titleEl.className = 'animate__animated animate__bounce'
   messageEl.textContent = "We have a winner!"
   messageEl.className = "winner"
   guessesEl.appendChild(div)
@@ -90,6 +95,11 @@ function renderWin (div) {
   } else {
     messageEl.textContent = `Congratulations! You found the number ${secretNum} in ${guessList.length} guesses!`
   }
+  setTimeout(function(){
+    kazoo.play();
+  },100);
+
+  
 }
 
 function renderGuess(div, lastGuess) {
@@ -105,3 +115,8 @@ function renderGuess(div, lastGuess) {
   guessesEl.appendChild(div)
 
 }
+
+
+
+
+
