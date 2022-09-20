@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <script defer src="./app.js"></script>
-    <title>Document</title>
+    <title>Guessing Game</title>
 </head>
 <body>
-    
+    <h1>Number Guessing Game</h1>
+    <h2 id="message">Please enter a guess between 1 and 100!</h2>
+    <h3 id="prev-guesses-msg"></h3>
+    <div id="prev-guesses"></div>
+
+    <form>
+        <input id="guess-input" placeholder="Enter guess here..." type="text" />
+        <button id="guess-button" type="submit">Guess</button>
+        <button id="reset-button" type="reset" hidden>Reset</button>
+    </form>
 </body>
 </html>
