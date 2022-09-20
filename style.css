@@ -42,3 +42,8 @@ form {
 .error {
     color: #f13814;
 }
+
+#guess-input {
+    padding: 5px 5px 5px 5px;
+    border-radius: .25rem
+  }
